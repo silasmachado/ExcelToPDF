@@ -19,6 +19,7 @@
 *.tar.gz
 *.rar
 *relatorios*
+*target*
 .metadata
 .settings
 .classpath

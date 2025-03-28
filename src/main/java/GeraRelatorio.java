@@ -40,7 +40,7 @@ public class GeraRelatorio {
     }
     
     private static String getReportDirectory() {
-    	return "relatorios_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    	return "relatórios_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
     
     private static void createDocument(List<Aluno> listaAlunos) throws DocumentException, MalformedURLException, IOException {
