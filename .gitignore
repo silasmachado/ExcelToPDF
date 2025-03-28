@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+*relatorios*
 .metadata
 .settings
 .classpath

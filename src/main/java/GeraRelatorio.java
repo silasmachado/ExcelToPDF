@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class GeraRelatorio {
     
     public static void geraRelatorio(File file) throws Exception {
     	try {
-        	File directory = new File("relatorios");
+        	File directory = new File(getReportDirectory());
             if (! directory.exists())
                 directory.mkdir();
             createDocument(readXLS(file));
@@ -37,10 +39,14 @@ public class GeraRelatorio {
         }
     }
     
+    private static String getReportDirectory() {
+    	return "relatorios_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+    
     private static void createDocument(List<Aluno> listaAlunos) throws DocumentException, MalformedURLException, IOException {
     	for (Aluno aluno : listaAlunos) {
     		Document document = new Document();
-    		PdfWriter.getInstance(document, new FileOutputStream("relatorios/Relatório Acadêmico " + aluno.getNome() + ".pdf"));
+    		PdfWriter.getInstance(document, new FileOutputStream(getReportDirectory() + "/Relatório Acadêmico " + aluno.getNome() + ".pdf"));
     		document.open();
     		addHeader(document);
     		addContent(document, aluno);

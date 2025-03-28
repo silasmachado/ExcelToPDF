@@ -27,7 +27,8 @@ public class Janela {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("INSTITUTO FOCAR - EXCEL PARA PDF");
-		frame.setBounds(400, 400, 400, 310);
+		frame.setBounds(200, 200, 400, 310);
+		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new FlowLayout());
 		frame.setIconImage(new ImageIcon(getClass().getResource("logo_focar_icon.png")).getImage());
@@ -57,22 +58,6 @@ public class Janela {
 					if (result == JFileChooser.APPROVE_OPTION) {
 						GeraRelatorio.geraRelatorio(fc_excel.getSelectedFile());
 						JOptionPane.showMessageDialog(null, "Relatórios acadêmicos gerados!");
-						/*
-					String tmpdir = System.getProperty("java.io.tmpdir");
-					String fileLocation = tmpdir + "/temp.xlsx";
-					try {
-						FileOutputStream outputStream = new FileOutputStream(fileLocation);
-						
-						Workbook workbook = WorkbookFactory.create(file);
-						workbook.write(outputStream);
-						workbook.close();
-						GeraRelatorio.geraRelatorio();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Ocorreu um erro! " + e1.getMessage());
-						System.exit(1);
-					}
-						 */
 					}
 					
 				} catch (Exception exp) {
@@ -87,5 +72,4 @@ public class Janela {
 		frame.add(btnPanel);
 		frame.setVisible(true);
 	}
-	
 }
